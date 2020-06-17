@@ -1,26 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-
-const PageOne = () => {
-  return (
-    <div>
-      {" "}
-      Page 1
-      {/* WRONG APPROACH - because it would refresh the page meaning all of states and props would be all gone and set back to that initial state */}
-      {/* <a href="/pagetwo"> Get me to page two</a> */}
-      <Link to="/pagetwo"> Get me to page two</Link>
-    </div>
-  );
-};
-
-const PageTwo = () => {
-  return (
-    <div>
-      {" "}
-      Page 2 <Link to="/"> Get me to page </Link>
-    </div>
-  );
-};
+import StreamCreate from "./streams-routes/StreamCreate";
+import StreamDelete from "./streams-routes/StreamDelete";
+import StreamEdit from "./streams-routes/StreamEdit";
+import StreamList from "./streams-routes/StreamList";
+import StreamShow from "./streams-routes/StreamShow";
 
 const App = () => {
   return (
@@ -28,8 +12,11 @@ const App = () => {
       <BrowserRouter>
         <div>
           {/* exact property makes sure that home page component will show only exactly on the home page url */}
-          <Route path="/" exact component={PageOne} />
-          <Route path="/pagetwo" component={PageTwo} />
+          <Route path="/" exact component={StreamList} />
+          <Route path="/streams/create" component={StreamCreate} />
+          <Route path="/streams/edit" component={StreamEdit} />
+          <Route path="/streams/delete" component={StreamDelete} />
+          <Route path="/streams/show" component={StreamShow} />
         </div>
       </BrowserRouter>
     </div>
@@ -37,3 +24,18 @@ const App = () => {
 };
 
 export default App;
+
+// NOTES FOR REACT-ROUTER-DOM
+
+// const PageOne = () => {
+//   return (
+//     <div>
+//       {" "}
+//       Page 1
+//       {/* WRONG APPROACH - because it would refresh the page meaning all of states and props would be all gone and set back to that initial state */}
+//       {/* <a href="/pagetwo"> Get me to page two</a> */}
+//       {/* WRIGTH APPROACH */}
+//       <Link to="/pagetwo"> Get me to page two</Link>
+//     </div>
+//   );
+// };
