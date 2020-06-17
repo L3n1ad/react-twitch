@@ -1,17 +1,20 @@
 import React from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import StreamCreate from "./streams-routes/StreamCreate";
 import StreamDelete from "./streams-routes/StreamDelete";
 import StreamEdit from "./streams-routes/StreamEdit";
 import StreamList from "./streams-routes/StreamList";
 import StreamShow from "./streams-routes/StreamShow";
+import Header from "./Header";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <div>
+        <Header />
+        <div className="ui container">
           {/* exact property makes sure that home page component will show only exactly on the home page url */}
+
           <Route path="/" exact component={StreamList} />
           <Route path="/streams/create" component={StreamCreate} />
           <Route path="/streams/edit" component={StreamEdit} />
