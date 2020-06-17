@@ -7,7 +7,7 @@ const GoogleAuth = () => {
     window.gapi.load("client:auth2", () => {
       window.gapi.client.init({
         clientId: process.env.REACT_APP_GOOGLE_AUTH_KEY,
-        scpoe: "email",
+        scope: "email",
       });
     });
   }, []);
