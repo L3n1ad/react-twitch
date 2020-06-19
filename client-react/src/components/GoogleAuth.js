@@ -14,10 +14,15 @@ const GoogleAuth = () => {
         })
         .then(() => {
           const auth = window.gapi.auth2.getAuthInstance();
-          setIsSignedIn(auth.isSignedIn.get());
+          onAuthChange(auth);
+          auth.isSignedIn.listen(() => onAuthChange(auth));
         });
     });
   }, []);
+
+  function onAuthChange(auth) {
+    setIsSignedIn(auth.isSignedIn.get());
+  }
 
   function renderAuthButton() {
     if (isSignedIn === null) {
