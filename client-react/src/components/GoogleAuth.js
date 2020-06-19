@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const GoogleAuth = () => {
-  const [isSignedIn, setIsSignedIn] = useState(null);
+class GoogleAuth extends React.Component {
+  state = { isSignedIn: null };
   // window. important to tell react that it is available on window scope
-  useEffect(() => {
+  componentDidMount() {
     //   add call back to make sure it will be called only once the data return from google
     //   we can use .then because .init returns a promise so we can do things once the library initalised itself
     window.gapi.load("client:auth2", () => {
@@ -13,28 +13,48 @@ const GoogleAuth = () => {
           scope: "email",
         })
         .then(() => {
-          const auth = window.gapi.auth2.getAuthInstance();
-          onAuthChange(auth);
-          auth.isSignedIn.listen(() => onAuthChange(auth));
+          this.auth = window.gapi.auth2.getAuthInstance();
+          this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          this.auth.isSignedIn.listen(this.onAuthChange);
         });
     });
-  }, []);
-
-  function onAuthChange(auth) {
-    setIsSignedIn(auth.isSignedIn.get());
   }
 
-  function renderAuthButton() {
-    if (isSignedIn === null) {
-      return <div>I don't know if we are signed in!</div>;
-    } else if (isSignedIn) {
-      return <div>I am signed in!</div>;
+  onAuthChange = () => {
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+  };
+
+  onSignIn = () => {
+    this.auth.signIn();
+  };
+
+  onSignOut = () => {
+    this.auth.signOut();
+  };
+
+  renderAuthButton() {
+    if (this.state.isSignedIn === null) {
+      return null;
+    } else if (this.state.isSignedIn) {
+      return (
+        <button className="ui red google button" onClick={this.onSignOut}>
+          <i className="google icon" />
+          Sign Out
+        </button>
+      );
     } else {
-      return <div>I am not signed in!</div>;
+      return (
+        <button className="ui red google button" onClick={this.onSignIn}>
+          <i className="google icon" />
+          Sign in with Google
+        </button>
+      );
     }
   }
 
-  return <div>{renderAuthButton()}</div>;
-};
+  render() {
+    return <div>{this.renderAuthButton()}</div>;
+  }
+}
 
 export default GoogleAuth;
