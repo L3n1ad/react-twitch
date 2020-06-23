@@ -2,12 +2,14 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 class StreamCreate extends React.Component {
-  renderInput({ input, label }) {
+  renderInput({ input, label, meta }) {
+    console.log(meta);
     // MODERN SYNTAX
     return (
       <div className="field">
         <label>{label}</label>
         <input {...input} />
+        <div>{meta.error}</div>
       </div>
     );
 
@@ -51,6 +53,7 @@ class StreamCreate extends React.Component {
 }
 
 // If there is no error messages it will return an empty object which will tell redux-form that the form is validated and it can be submitted
+// this function is called every single time the user interacts with the form
 const validate = (formValues) => {
   const errors = {};
   if (!formValues.title) {
@@ -64,6 +67,8 @@ const validate = (formValues) => {
 };
 
 // it is essentialy the same thing as connect with redux
+// validate is a key word just as form they need to be called like that
 export default reduxForm({
   form: "streamCreate",
+  validate: validate,
 })(StreamCreate);
