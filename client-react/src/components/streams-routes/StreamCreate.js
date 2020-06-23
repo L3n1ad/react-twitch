@@ -50,6 +50,19 @@ class StreamCreate extends React.Component {
   }
 }
 
+// If there is no error messages it will return an empty object which will tell redux-form that the form is validated and it can be submitted
+const validate = (formValues) => {
+  const errors = {};
+  if (!formValues.title) {
+    errors.title = "You must enter a title";
+  }
+  if (!formValues.description) {
+    errors.description = "You must enter a description";
+  }
+
+  return errors;
+};
+
 // it is essentialy the same thing as connect with redux
 export default reduxForm({
   form: "streamCreate",
