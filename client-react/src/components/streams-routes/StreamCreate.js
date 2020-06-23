@@ -2,9 +2,15 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 
 class StreamCreate extends React.Component {
-  renderInput({ input }) {
+  renderInput({ input, label }) {
     // MODERN SYNTAX
-    return <input {...input} />;
+    return (
+      <div className="field">
+        <label>{label}</label>
+        <input {...input} />
+      </div>
+    );
+
     // OLDER SyNTAX
     // renderInput(formProps)
     // console.log(formProps);
@@ -19,11 +25,16 @@ class StreamCreate extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <form>
+      <form className="ui form">
         {/* some proprs are always required such as name,  */}
         {/* the field element has no idea how to render anything on the screen its need a component prop to render a component or call a function which returns a element which can be rendered on the screen */}
-        <Field name="title" component={this.renderInput} />
-        <Field name="description" component={this.renderInput} />
+        {/* Field will automatically pass unknown properties to the function so we will have access to it */}
+        <Field name="title" component={this.renderInput} label="Enter Title" />
+        <Field
+          name="description"
+          component={this.renderInput}
+          label="Enter Description"
+        />
       </form>
     );
   }
