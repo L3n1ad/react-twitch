@@ -14,8 +14,10 @@ class StreamCreate extends React.Component {
 
   renderInput = ({ input, label, meta }) => {
     // MODERN SYNTAX
+    const className = `field ${meta.error && meta.touched ? "error" : ""}`;
+
     return (
-      <div className="field">
+      <div className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
         {this.renderError(meta)}
@@ -42,9 +44,10 @@ class StreamCreate extends React.Component {
     // console.log(this.props);
     return (
       // we need to call redux-form handleSubmit function and pass our own formSubmit function as an argument
+      // error is needed in the class name to display the error message otherwise all error messages is set to display:none
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
-        className="ui form"
+        className="ui form error"
       >
         {/* some proprs are always required such as name,  */}
         {/* the field element has no idea how to render anything on the screen its need a component prop to render a component or call a function which returns a element which can be rendered on the screen */}
