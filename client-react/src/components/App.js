@@ -16,7 +16,7 @@ const App = () => {
           {/* exact property makes sure that home page component will show only exactly on the home page url */}
 
           <Route path="/" exact component={StreamList} />
-          <Route path="/streams/create" component={StreamCreate} />
+          <Route path="/streams/new" component={StreamCreate} />
           <Route path="/streams/edit" component={StreamEdit} />
           <Route path="/streams/delete" component={StreamDelete} />
           <Route path="/streams/show" component={StreamShow} />
