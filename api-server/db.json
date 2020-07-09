@@ -27,6 +27,12 @@
       "description": "checking",
       "userId": "108025302828462917956",
       "id": 5
+    },
+    {
+      "title": "New history object",
+      "description": "Testing redirection",
+      "userId": "108025302828462917956",
+      "id": 6
     }
   ]
 }
