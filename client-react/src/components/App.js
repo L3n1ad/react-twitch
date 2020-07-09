@@ -1,16 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import StreamCreate from "./streams-routes/StreamCreate";
 import StreamDelete from "./streams-routes/StreamDelete";
 import StreamEdit from "./streams-routes/StreamEdit";
 import StreamList from "./streams-routes/StreamList";
 import StreamShow from "./streams-routes/StreamShow";
 import Header from "./Header";
+import history from "../history";
 
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
+      <Router history={history}>
         <Header />
         <div className="ui container">
           {/* exact property makes sure that home page component will show only exactly on the home page url */}
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="/streams/delete" component={StreamDelete} />
           <Route path="/streams/show" component={StreamShow} />
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };
