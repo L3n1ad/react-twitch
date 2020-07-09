@@ -1,28 +1,6 @@
 {
   "streams": [
     {
-      "title": "Test post",
-      "description": "hello",
-      "id": 1
-    },
-    {
-      "title": "Test post",
-      "description": "hello",
-      "id": 2
-    },
-    {
-      "title": "Create a new stream",
-      "description": "this stream will be with user id",
-      "userId": "108025302828462917956",
-      "id": 3
-    },
-    {
-      "title": "checking success",
-      "description": "checking",
-      "userId": "108025302828462917956",
-      "id": 4
-    },
-    {
       "title": "checking success",
       "description": "checking",
       "userId": "108025302828462917956",
