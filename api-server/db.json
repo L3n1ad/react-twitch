@@ -1,16 +1,10 @@
 {
   "streams": [
     {
-      "title": "checking success",
-      "description": "checking",
+      "title": "new test",
+      "description": "testing fetching single stream",
       "userId": "108025302828462917956",
-      "id": 5
-    },
-    {
-      "title": "New history object",
-      "description": "Testing redirection",
-      "userId": "108025302828462917956",
-      "id": 6
+      "id": 1
     }
   ]
 }
