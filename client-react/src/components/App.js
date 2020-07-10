@@ -17,10 +17,10 @@ const App = () => {
           {/* exact property makes sure that home page component will show only exactly on the home page url */}
 
           <Route path="/" exact component={StreamList} />
+          <Route path="/streams/:id" component={StreamShow} />
           <Route path="/streams/new" component={StreamCreate} />
           <Route path="/streams/edit/:id" component={StreamEdit} />
           <Route path="/streams/delete/:id" component={StreamDelete} />
-          <Route path="/streams/show/:id" component={StreamShow} />
         </div>
       </Router>
     </div>
