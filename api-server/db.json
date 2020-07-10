@@ -1,12 +1,6 @@
 {
   "streams": [
     {
-      "title": "new test PATCH",
-      "description": "testing fetching single stream",
-      "userId": "108025302828462917956",
-      "id": 1
-    },
-    {
       "title": "After StreamCreate refactored",
       "description": "refactored",
       "userId": "108025302828462917956",
