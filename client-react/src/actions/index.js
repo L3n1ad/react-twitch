@@ -46,10 +46,12 @@ export const fetchStream = (streamId) => async (dispatch) => {
   dispatch({ type: FETCH_STREAM, payload: response.data });
 };
 
+// USING PATCH CAUSE WE ARE UPDATING ONLY SOME DETAILS OF A RECORD
 export const editStream = (streamId, updatedValues) => async (dispatch) => {
-  const response = await streams.put(`/streams/${streamId}`, updatedValues);
+  const response = await streams.patch(`/streams/${streamId}`, updatedValues);
 
   dispatch({ type: EDIT_STREAM, payload: response.data });
+  history.push("/");
 };
 
 export const deleteStream = (streamId) => async (dispatch) => {
